@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Role extends BaseEntity {
+public class RoleEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true, length = 50)
     private RoleName roleName;
@@ -21,11 +21,11 @@ public class Role extends BaseEntity {
 
     @ManyToMany(mappedBy = "roles")
     @ToString.Exclude
-    private Set<User> users;
+    private Set<UserEntity> userEntities;
 
     public enum RoleName {
-        ROLE_ADMIN,
-        ROLE_CUSTOMER,
-        ROLE_STAFF,
+        ADMIN,
+        CUSTOMER,
+        STAFF,
     }
 }

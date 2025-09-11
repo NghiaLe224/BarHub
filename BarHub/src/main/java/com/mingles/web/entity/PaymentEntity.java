@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Payment extends BaseEntity {
+public class PaymentEntity extends BaseEntity {
     @Column(precision = 15, scale = 2)
     private double amount;
 
@@ -25,7 +25,7 @@ public class Payment extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "booking_id")
-    private Booking booking;
+    private BookingEntity bookingEntity;
 
     public enum Status {
         PENDING,

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FreshToken extends BaseEntity {
+public class RefreshTokenEntity extends BaseEntity {
     @Column(length = 64)
     private String tokenValue;
     @Column
@@ -21,5 +21,5 @@ public class FreshToken extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude
-    private User user;
+    private UserEntity userEntity;
 }
