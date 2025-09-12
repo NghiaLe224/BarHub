@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -34,7 +33,7 @@ public class MenuController {
             @RequestParam(name = "sortBy", required = false, defaultValue = DEFAULT_SORT_BY) String sortBy,
             @RequestParam(name = "sortDir", required = false, defaultValue = DEFAULT_SORT_DIR) String sortDir,
             @RequestParam(name = "keyword", required = false) String keyword
-    ){
+    ) {
         Pageable pageable = PaginationUtils.createPageable(pageNumber, size, sortBy, sortDir);
         return new ResponseEntity<>(menuService.browseMenu(pageable, keyword), HttpStatus.OK);
     }
@@ -51,7 +50,7 @@ public class MenuController {
     public ResponseEntity<ApiResponse<MenuItemResponse>> updateMenuItem(
             @PathVariable Long id,
             @Valid @RequestPart CreateMenuItemRequest request
-    ){
+    ) {
         ApiResponse<MenuItemResponse> response = menuService.updateMenuItem(id, request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -59,7 +58,7 @@ public class MenuController {
     @DeleteMapping("/admin/menu/{id}")
     public ResponseEntity<ApiResponse<Void>> deleteMenuItem(
             @PathVariable Long id
-    ){
+    ) {
         return ResponseEntity.ok(new ApiResponse<>(
                 null, "Deleted menu item successfully", LocalDateTime.now()));
     }
