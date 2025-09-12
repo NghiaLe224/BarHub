@@ -1,0 +1,3 @@
+# ignore local secrets
+mail.txt
+mingles-dev_accessKeys.csv
