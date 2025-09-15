@@ -21,5 +21,5 @@ public class RefreshTokenEntity extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude
-    private UserEntity userEntity;
+    private UserEntity user;
 }

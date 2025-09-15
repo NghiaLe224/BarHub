@@ -1,11 +1,9 @@
 package com.mingles.web.entity;
 
-import com.mingles.web.listener.BookingStatusListener;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "bookings")
@@ -14,32 +12,38 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EntityListeners(BookingStatusListener.class)
 public class BookingEntity extends BaseEntity {
+
+    @Column(nullable = false)
     private String customerName;
+
+    @Column(nullable = false)
     private String customerPhone;
+
+    @Column(nullable = false)
+    private String customerEmail;
+
+    @Column(nullable = false)
     private LocalDateTime bookingTime;
-    private int numberOfGuests;
+
+    @Column(nullable = false)
+    private Integer numberOfGuests;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    @Column(nullable = false)
+    private BookingStatus status;
+
+    private String note;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "table_id")
-    private TableEntity table;
-
-    public enum Status {
-        PENDING, CONFIRMED, REJECTED, CANCELLED
-    }
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 
     @Transient
-    private Status previousStatus;
+    private BookingStatus previousStatus;
 
     @PostLoad
     public void recordPreviousStatus() {
         this.previousStatus = this.status;
     }
-
-    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PaymentEntity> paymentEntities;
 }

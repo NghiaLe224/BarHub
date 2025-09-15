@@ -16,8 +16,10 @@ import java.util.Set;
 public class UserEntity extends BaseEntity {
     @Column(nullable = false, unique = true, length = 50)
     private String username;
+
     @Column(nullable = false)
     private String hashingPassword;
+
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
@@ -31,5 +33,8 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     @ToString.Exclude
-    private Set<RoleEntity> roleEntities;
+    private Set<RoleEntity> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BookingEntity> bookings;
 }

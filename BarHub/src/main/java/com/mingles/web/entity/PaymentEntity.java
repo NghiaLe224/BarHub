@@ -3,6 +3,8 @@ package com.mingles.web.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "payments")
 @Getter
@@ -12,7 +14,7 @@ import lombok.*;
 @Builder
 public class PaymentEntity extends BaseEntity {
     @Column(precision = 15, scale = 2)
-    private double amount;
+    private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
     private Status status;
