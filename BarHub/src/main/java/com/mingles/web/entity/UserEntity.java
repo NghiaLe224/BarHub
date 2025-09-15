@@ -21,8 +21,8 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RefreshTokenEntity> tokens;
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RefreshTokenEntity> refreshTokenEntities;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

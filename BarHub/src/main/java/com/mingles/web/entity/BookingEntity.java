@@ -40,6 +40,6 @@ public class BookingEntity extends BaseEntity {
         this.previousStatus = this.status;
     }
 
-    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "bookingEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PaymentEntity> paymentEntities;
 }
