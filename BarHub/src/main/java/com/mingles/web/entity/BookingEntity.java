@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EntityListeners(BookingStatusListener.class)
+//@EntityListeners(BookingStatusListener.class)
 public class BookingEntity extends BaseEntity {
     private String customerName;
     private String customerPhone;

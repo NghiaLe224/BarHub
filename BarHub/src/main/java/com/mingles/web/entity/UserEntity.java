@@ -3,6 +3,7 @@ package com.mingles.web.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -31,5 +32,5 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     @ToString.Exclude
-    private Set<RoleEntity> roleEntities;
+    private Set<RoleEntity> roleEntities = new HashSet<>();
 }
