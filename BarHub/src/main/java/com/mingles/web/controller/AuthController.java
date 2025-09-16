@@ -4,6 +4,7 @@ package com.mingles.web.controller;
 //Logout
 //Forgot Password (gửi email/SMS)
 //Reset Password (token)
+// refresh token
 
 import com.mingles.web.dto.auth.AuthenticationRequest;
 import com.mingles.web.dto.auth.AuthenticationResponse;
@@ -12,7 +13,6 @@ import com.mingles.web.dto.common.ApiResponse;
 import com.mingles.web.service.AuthenticationService;
 import com.mingles.web.service.RefreshTokenService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

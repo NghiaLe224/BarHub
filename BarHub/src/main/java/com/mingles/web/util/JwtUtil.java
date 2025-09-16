@@ -23,7 +23,7 @@ public class JwtUtil {
         return Jwts.builder().setSubject(username)
                 .claim("roles", roleNames)
                 .signWith(key)
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME/(24*60)*15)) // 15 minus
                 .compact();
     }
 
@@ -54,8 +54,12 @@ public class JwtUtil {
 
     }
 
+    public static boolean validateToken(String token) {
+        return extractExpiration(token).isAfter(LocalDateTime.now());
+    }
+
     @SuppressWarnings("unchecked") // don't know what type of List : String or Object ,..
-    public List<String> extractRoles(String token) {
+    public static List<String> extractRoles(String token) {
         return Jwts.parserBuilder().setSigningKey(key).build()
                 .parseClaimsJws(token)
                 .getBody()

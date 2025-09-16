@@ -1,5 +1,7 @@
 package com.mingles.web.service;
 
-public interface UserService {
+import com.mingles.web.entity.UserEntity;
 
+public interface UserService {
+    UserEntity getUserByUsername(String username);
 }
