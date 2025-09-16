@@ -19,7 +19,7 @@ public class RoleEntity extends BaseEntity {
 
     private String description;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roleEntities")
     @ToString.Exclude
     private Set<UserEntity> userEntities;
 

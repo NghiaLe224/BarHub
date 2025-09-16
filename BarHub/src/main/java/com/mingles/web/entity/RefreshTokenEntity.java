@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class RefreshTokenEntity extends BaseEntity {
-    @Column(length = 64)
+    @Column(length = 512, nullable = false, unique = true)
     private String tokenValue;
     @Column
     private LocalDateTime expireTime;
